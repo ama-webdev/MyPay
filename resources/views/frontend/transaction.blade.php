@@ -24,6 +24,7 @@
 
 @section('content')
  <div class="card">
+     <h5 class="mx-1 my-1">Transactions</h5>
     <div class="d-flex justify-content-between">
         <div class="input-group my-2 mx-1">
             <div class="input-group-prepend">

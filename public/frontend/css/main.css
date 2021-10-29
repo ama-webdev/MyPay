@@ -24,6 +24,19 @@
     color: var(--text-muted);
     font-size: 1.1rem;
     text-decoration: none;
+    position: relative;
+}
+
+.unread_noti_count {
+    position: absolute;
+    top: -10px;
+    left: 6px;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+}
+
+.top-nav a.active {
+    color: var(--primary-color);
 }
 
 .top-nav .left h5 {
@@ -51,7 +64,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: .7rem 2rem;
+    padding: .8rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -60,11 +73,11 @@
 
 .bot-nav a {
     color: #777;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .bot-nav a.active {
-    color: var(--primary-color);
+    color: var(--primary-color) !important;
 }
 
 .content {
@@ -106,7 +119,6 @@
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
-    gap: 1rem;
 }
 
 .icons>div {
@@ -118,6 +130,15 @@
     border-radius: .5rem;
     padding: .5rem 1rem;
     box-shadow: var(--shadow);
+    margin: 0 .5rem;
+}
+
+.icons>div:first-child {
+    margin-left: 0;
+}
+
+.icons>div:last-child {
+    margin-right: 0;
 }
 
 .icons>div>a {
@@ -125,7 +146,7 @@
     text-decoration: none;
     font-size: 1.5rem;
     border-radius: 30%;
-    color: var(--primary-color);
+    color: var(--text-muted);
 }
 
 .icons>div>span {
@@ -155,7 +176,7 @@
 
 .features>div>a {
     font-size: 1.5rem;
-    color: var(--primary-color);
+    color: var(--text-muted);
     display: block;
 }
 
@@ -179,7 +200,7 @@
     box-shadow: var(--shadow);
     border-radius: .5rem;
     display: flex;
-    gap: .5rem;
+    /* gap: .5rem; */
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -187,7 +208,7 @@
 
 .promotions .promotion h6 {
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--text-muted);
     font-family: ubuntu;
 }
 
@@ -212,19 +233,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: .5rem;
     margin-top: 1rem;
 }
 
 .owl-dot {
-    width: 10px;
+    width: 25px;
     height: 10px;
-    border-radius: 50%;
-    border: 1px solid var(--primary-color) !important;
+    border-radius: 1rem;
+    border: 1px solid var(--dark-color) !important;
+    margin: 0 .3rem;
 }
 
 .owl-dot.active {
-    background-color: var(--primary-color) !important;
+    border-color: var(--danger-color) !important;
 }
 
 /* Menu */

@@ -43,5 +43,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/myqr', 'Frontend\PageController@myQR')->name('myqr');
     Route::get('/myscan', 'Frontend\PageController@myScan')->name('myscan');
 
+    Route::get('/notifications', 'Frontend\NotificationController@index')->name('notifications');
+    Route::get('/notification/{id}', 'Frontend\NotificationController@show')->name('notification');
+
     Route::get('/comming-soon', 'Frontend\PageController@commingSoon')->name('comming-soon');
 });

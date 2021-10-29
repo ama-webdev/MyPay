@@ -71,12 +71,12 @@
     </div>
     <!-- promotion -->
     <div class="promotions owl-carousel">
-        <div class="promotion item1">
-            <h6>Easy To Transfer</h6>
-            <span>Communication is transfer of emotion.</span>
+        <div class="promotion item1 p-3">
+            <h6>Get Promotion Tickets By Doing Payment</h6>
+            <span>You can get promotion tickets by paying at MyShop</span>
         </div>
         <div class="promotion item2">
-            <h6>Pay Some Bills With Us</h6>
+            <h6>Pay Bills With Us</h6>
             <span>Be sure to pay your bills on time.</span>
         </div>
         <div class="promotion item3">

@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Frontend;
 
 // use Illuminate\Http\Request;
 
-use App\Helpers\UUIDGenerate;
 use App\User;
+use App\Transaction;
 use Illuminate\Http\Request;
+use App\Helpers\UUIDGenerate;
+use LaravelQRCode\Facades\QRCode;
 use App\Http\Requests\UpdatePhone;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -14,10 +16,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UpdatePassword;
 use App\Http\Requests\TransferFormValidate;
+use Illuminate\Support\Facades\Notification;
+
 use App\Http\Requests\TransferCompleteFormValidate;
-use App\Transaction;
+use App\Notifications\GeneralNotification;
 use Symfony\Component\CssSelector\Node\FunctionNode;
-use LaravelQRCode\Facades\QRCode;
 
 class PageController extends Controller
 {
@@ -43,6 +46,15 @@ class PageController extends Controller
         if (Hash::check($old_password, $user->password)) {
             $user->password = Hash::make($new_password);
             $user->update();
+
+            $title = 'Change Password';
+            $message = 'Your password is successfully changed.';
+            $sourceable_id = $user->id;
+            $sourceable_type = User::class;
+            $web_link = url('menu');
+
+            Notification::send([$user], new GeneralNotification($title, $message, $sourceable_id, $sourceable_type, $web_link));
+
             return redirect()->route('menu')->with('updated', 'Successfully Update');
         }
         return back()->withErrors(['old_password' => 'Old Password is not correct.'])->withInput();
@@ -59,6 +71,14 @@ class PageController extends Controller
         if (Hash::check($password, $user->password)) {
             $user->phone = $request->phone;
             $user->update();
+
+            $title = 'Change Phone Number';
+            $message = 'Your phone number is successfully changed.';
+            $sourceable_id = $user->id;
+            $sourceable_type = User::class;
+            $web_link = url('menu');
+
+            Notification::send([$user], new GeneralNotification($title, $message, $sourceable_id, $sourceable_type, $web_link));
             return redirect()->route('menu')->with('updated', 'Successfully Update');
         }
         return back()->withErrors(['password' => 'Password is not correct.'])->withInput();
@@ -155,6 +175,22 @@ class PageController extends Controller
             $to_account_transaction->source_id = $from_account->id;
             $to_account_transaction->note = $note;
             $to_account_transaction->save();
+
+            // From account notification
+            $title = 'E-money send.';
+            $message = 'You send ' . number_format($amount) . ' Ks to ' . $to_account->phone . '.';
+            $sourceable_id = $from_account_transaction->id;
+            $sourceable_type = Transaction::class;
+            $web_link = route('transactionDetail', $from_account_transaction->trx_id);
+            Notification::send([$from_account], new GeneralNotification($title, $message, $sourceable_id, $sourceable_type, $web_link));
+
+            // To account notification
+            $title = 'E-money received';
+            $message = 'You received ' . number_format($amount) . ' Ks from ' . $from_account->phone . '.';
+            $sourceable_id = $to_account_transaction->id;
+            $sourceable_type = Transaction::class;
+            $web_link = route('transactionDetail', $to_account_transaction->trx_id);
+            Notification::send([$to_account], new GeneralNotification($title, $message, $sourceable_id, $sourceable_type, $web_link));
 
 
             DB::commit();
