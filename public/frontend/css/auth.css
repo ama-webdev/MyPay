@@ -1,0 +1,123 @@
+.wrapper {
+    position: relative;
+    max-width: 768px;
+    height: 100vh;
+    max-height: 100vh;
+    margin: 0 auto;
+}
+
+.home-page {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--primary-color);
+}
+
+.header {
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: ubuntu;
+    padding: 1rem;
+    color: var(--light-color);
+}
+
+.auth-section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: var(--light-color);
+    padding: 1rem;
+    width: 100%;
+}
+
+.auth-section-header {
+    display: grid;
+    margin: 2rem 0;
+}
+
+.auth-section-header * {
+    padding: 0;
+    margin: 0;
+}
+
+.auth-section-header span {
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-family: ubuntu;
+}
+
+.auth-section-header p {
+    font-size: .9rem;
+    font-family: ubuntu;
+}
+
+.auth-section-footer {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.auth-section-footer a {
+    text-align: center;
+    text-decoration: none;
+    padding: .5rem;
+    border: 1px solid var(--light-color);
+    font-weight: 700;
+    text-transform: capitalize;
+    border-radius: .5rem;
+}
+
+.btn-login {
+    background-color: var(--light-color);
+    color: var(--primary-color);
+}
+
+.btn-login:hover {
+    color: var(--light-color);
+    background-color: var(--primary-color);
+}
+
+.btn-signup {
+    color: var(--light-color);
+}
+
+.btn-signup:hover {
+    background-color: var(--light-color);
+    color: var(--primary-color);
+}
+
+/* Login */
+
+.login {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.top {
+    background-color: var(--primary-color);
+    height: 40vh;
+    position: relative;
+}
+
+.top span {
+    position: absolute;
+    top: 35%;
+    left: 1rem;
+    font-size: 2rem;
+    color: var(--light-color);
+    font-weight: 700;
+}
+
+.top a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--light-color);
+    padding: 1rem;
+}
+
+.bottom {
+    height: 60vh;
+    padding: 1rem;
+    background-color: var(--light-color);
+    overflow: auto;
+}
